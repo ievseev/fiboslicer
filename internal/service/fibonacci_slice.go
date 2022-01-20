@@ -2,14 +2,14 @@ package service
 
 import fiboslicer "github.com/ievseev/fibonacci-slicer/internal"
 
-type FibonacciSliceService struct {
+type fibonacciSliceService struct {
 }
 
-func NewFibonacciSliceService() *FibonacciSliceService {
-	return &FibonacciSliceService{}
+func NewFibonacciSliceService() *fibonacciSliceService {
+	return &fibonacciSliceService{}
 }
 
-func (s *FibonacciSliceService) GetFibonacciSlice(sequenceLimit fiboslicer.SequenceLimit) (*[]int, error) {
+func (s *fibonacciSliceService) GetFibonacciSlice(sequenceLimit fiboslicer.SequenceLimit) (*[]int, error) {
 	sequenceLen := sequenceLimit.Y + 1
 	fibonacciSequence := getFibonacciSequence(sequenceLen)
 	result := getFibonacciSlice(fibonacciSequence, sequenceLimit.X, sequenceLimit.Y)
