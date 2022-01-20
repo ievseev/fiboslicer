@@ -1,6 +1,6 @@
 package service
 
-import fiboslicer "github.com/ievseev/fibonacci-slicer"
+import fiboslicer "github.com/ievseev/fibonacci-slicer/internal"
 
 type FibonacciSlice interface {
 	GetFibonacciSlice(sequenceLimit fiboslicer.SequenceLimit) (*[]int, error)

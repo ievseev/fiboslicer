@@ -1,4 +1,4 @@
-package fiboslicer
+package server
 
 import (
 	"context"

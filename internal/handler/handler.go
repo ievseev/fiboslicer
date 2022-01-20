@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ievseev/fibonacci-slicer/pkg/service"
+	"github.com/ievseev/fibonacci-slicer/internal/service"
 )
 
 type Handler struct {

@@ -1,4 +1,4 @@
-package fiboslicer
+package internal
 
 type SequenceLimit struct {
 	X int `json:"x"`

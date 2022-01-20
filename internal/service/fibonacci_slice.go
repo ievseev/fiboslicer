@@ -1,6 +1,6 @@
 package service
 
-import fiboslicer "github.com/ievseev/fibonacci-slicer"
+import fiboslicer "github.com/ievseev/fibonacci-slicer/internal"
 
 type FibonacciSliceService struct {
 }

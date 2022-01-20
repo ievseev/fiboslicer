@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	fiboslicer "github.com/ievseev/fibonacci-slicer"
+	fiboslicer "github.com/ievseev/fibonacci-slicer/internal"
 	"net/http"
 )
 
