@@ -4,6 +4,8 @@ import (
 	"context"
 	pb "fiboslicer/pkg/github.com/ievseev/fiboslicer"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"log"
 	"net"
 )
@@ -13,6 +15,11 @@ type FiboSlicerServer struct {
 }
 
 func (s *FiboSlicerServer) GetFibonacciSlice(ctx context.Context, req *pb.SliceRequest) (*pb.FibonacciSliceResponse, error) {
+	if req.X > req.Y {
+		err := status.Error(codes.InvalidArgument, "X must be less than Y")
+		return nil, err
+	}
+
 	sequenceLen := req.Y + 1
 	fibonacciSequence := getFibonacciSequence(sequenceLen)
 	result := getFibonacciSlice(fibonacciSequence, req.X, req.Y)
@@ -20,8 +27,6 @@ func (s *FiboSlicerServer) GetFibonacciSlice(ctx context.Context, req *pb.SliceR
 }
 
 func getFibonacciSequence(n int32) *[]int32 {
-
-	//TODO handle error: n<1
 
 	if n == 1 {
 		return &[]int32{1}
@@ -41,7 +46,6 @@ func getFibonacciSequence(n int32) *[]int32 {
 }
 
 func getFibonacciSlice(fibonacciSeq *[]int32, x int32, y int32) []int32 {
-	//TODO handle errors: x > y
 
 	fibonacciSlice := (*fibonacciSeq)[x : y+1]
 	return fibonacciSlice
