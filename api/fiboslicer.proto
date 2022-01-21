@@ -1,0 +1,17 @@
+syntax = "proto3";
+package fiboslicer;
+
+option go_package="github.com/ievseev/fiboslicer";
+
+message SliceRequest {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message FibonacciSliceResponse {
+  repeated int32 members = 1;
+}
+
+service FiboSlicer {
+  rpc GetFibonacciSlice(SliceRequest) returns (FibonacciSliceResponse) {}
+}
