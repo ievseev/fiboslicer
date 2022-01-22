@@ -3,11 +3,13 @@ package main
 import (
 	"context"
 	pb "fiboslicer/pkg/github.com/ievseev/fiboslicer"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"log"
 	"net"
+	"net/http"
 )
 
 type FiboSlicerServer struct {
@@ -52,6 +54,17 @@ func getFibonacciSlice(fibonacciSeq *[]int32, x int32, y int32) []int32 {
 }
 
 func main() {
+	go func() {
+		// mux
+		mux := runtime.NewServeMux()
+
+		//register
+		pb.RegisterFiboSlicerHandlerServer(context.Background(), mux, &FiboSlicerServer{})
+
+		//http server
+		log.Fatalln(http.ListenAndServe("localhost:81", mux))
+	}()
+
 	listner, err := net.Listen("tcp", "localhost:80")
 	if err != nil {
 		log.Fatalln(err)

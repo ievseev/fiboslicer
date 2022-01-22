@@ -3,6 +3,8 @@ package fiboslicer;
 
 option go_package="github.com/ievseev/fiboslicer";
 
+import "google/api/annotations.proto";
+
 message SliceRequest {
   int32 x = 1;
   int32 y = 2;
@@ -13,5 +15,10 @@ message FibonacciSliceResponse {
 }
 
 service FiboSlicer {
-  rpc GetFibonacciSlice(SliceRequest) returns (FibonacciSliceResponse) {}
+  rpc GetFibonacciSlice(SliceRequest) returns (FibonacciSliceResponse) {
+    option (google.api.http) = {
+      post: "/get-fibonacci-slice"
+      body: "*"
+    };
+  }
 }

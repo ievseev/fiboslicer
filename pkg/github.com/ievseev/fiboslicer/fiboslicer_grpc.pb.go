@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.3
-// source: api/fiboslicer.proto
+// source: fiboslicer.proto
 
 package fiboslicer
 
@@ -101,5 +101,5 @@ var FiboSlicer_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/fiboslicer.proto",
+	Metadata: "fiboslicer.proto",
 }
